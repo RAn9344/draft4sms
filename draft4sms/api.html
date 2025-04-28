@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <style>
+        .bg-half-170 {
+            height: 50vh !important;
+            /* Use viewport height for full screen */
+            display: table;
+            /* To vertically center content within */
+            width: 100%;
+            background: url('https://shreethemes.in/leaping/layouts/images/bg.jpg') center center;
+            background-size: cover;
+            /* Ensure the background image covers the entire area */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        .connect-section {
+            text-align: center;
+            /* Optional: Center the entire section */
+            padding: 20px;
+            /* Optional: Add some padding around the section */
+            /* Add more styling as needed */
+        }
+
+        .connect-section h2 {
+            color: #333;
+            /* Example heading color */
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .connect-section p {
+            line-height: 1.6;
+            /* Improve readability */
+            margin-bottom: 10px;
+        }
+
+        .connect-section h3 {
+            color: #555;
+            /* Example subheading color */
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .connect-section ul {
+            list-style: none;
+            /* Remove default bullet points */
+            padding: 5px;
+            display: inline-block;
+            /* Allows centering of the list */
+            text-align: left;
+            /* Align list items to the left within the centered list */
+            position: relative;
+            left: 2%;
+        }
+
+        .connect-section ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            /* Add some space for custom bullet/icon */
+            position: relative;
+            /* For custom bullet positioning */
+
+        }
+
+        /* Optional: Style for custom bullet points */
+        .connect-section ul li::before {
+            content: "✓";
+            /* Example checkmark bullet */
+            color: green;
+            position: relative;
+            left: -5px;
+            top: 0;
+            /* Adjust vertical alignment as needed */
+
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -15px;
+            /* Adjust based on your grid system */
+            margin-right: -15px;
+            /* Adjust based on your grid system */
+        }
+
+        .col-md-4 {
+            flex: 0 0 auto;
+            width: 33.333333%;
+            /* For three equal columns on medium screens and up */
+            padding-left: 15px;
+            /* Adjust based on your grid system */
+            padding-right: 15px;
+            /* Adjust based on your grid system */
+        }
+
+        .mt-4 {
+            margin-top: 1.5rem;
+        }
+
+        .pt-2 {
+            padding-top: 0.5rem;
+        }
+
+        .branches {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            display: block;
+        }
+
+        .branch-image {
+            width: 100%;
+            height: 20%;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .branches:hover .overlay {
+            opacity: 1;
+        }
+
+        .branch-title {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Initially hide overlay content */
+        .overlay .branch-title,
+        .overlay .contact-info {
+            opacity: 0;
+            transition: opacity 0.3s ease 0.1s;
+        }
+
+        .branches:hover .overlay .branch-title,
+        .branches:hover .overlay .contact-info {
+            opacity: 1;
+        }
+
+        .branches:hover .branch-image {
+            opacity: 0.8;
+        }
+
+        .footer {
+            background-color: #343A40;
+            color: white;
+            padding: 0px 0;
+            position: relative;
+            text-align: center;
+            /* Default text alignment for the footer */
+        }
+
+        .footer-arc {
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .footer-arc svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer a {
+            color: #F8F9FA;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-content {
+            padding-top: 10px;
+            /* Space for the arc */
+        }
+
+        .footer-links {
+            margin-bottom: 10px;
+            text-align: left;
+            /* Align links to the left within their columns */
+        }
+
+        .footer-links h5 {
+            font-weight: bold;
+        }
+
+        /* WhatsApp Icon Style */
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-size: 30px;
+            z-index: 1000;
+            cursor: pointer;
+            height: 60px;
+            /* Adjust as needed */
+            width: 60px;
+            /* Should be the same as height for a perfect circle */
+            display: flex;
+            /* To easily center the icon inside */
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+
+        }
+
+        .whatsapp-icon:hover {
+            background-color: #128c45;
+        }
+
+        .whatsapp-icon i {
+            color: white;
+            ;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 24px;
+            /* Adjust size as needed */
+            color: white;
+            /* Default color for the icons */
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #F8F9FA;
+            /* Slightly lighter on hover */
+        }
+
+        .branch-image {
+            width: 100%;
+            /* Ensure the image takes the full width of its container */
+        }
+
+        .branch-overlay {
+            border-radius: 50px;
+            /* Apply border radius to the overlay as well */
+        }
+
+        .card-wrapper {
+            display: flex;
+            justify-content: center;
+            /* Center the cards horizontally */
+            flex-wrap: wrap;
+            /* Allow cards to wrap to the next line on smaller screens */
+            gap: 20px;
+            /* Spacing between cards */
+            margin-top: 30px;
+        }
+
+        .card {
+            width: calc(33.33% - 20px);
+            /* Adjust width for three columns with gap */
+            min-width: 300px;
+            /* Minimum width for responsiveness */
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center content vertically in flex container */
+            justify-content: center;
+            /* Center content horizontally in flex container */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            /* Slightly larger icon */
+            margin-bottom: 15px;
+            color: #28a745;
+            /* Green color for the icon */
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .card {
+                width: calc(50% - 20px);
+                /* Two columns on medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                /* Single column on small screens */
+            }
+        }
+
+        .card {
+            margin-bottom: 20px;
+            /* Adjust this value as needed */
+            /* Add any other card styles here */
+            border: 1px solid #ccc;
+            /* Example border */
+            padding: 15px;
+            /* Example padding */
+            border-radius: 5px;
+            /* Example rounded corners */
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 5px;
+        }
+
+        .feature-list li::before {
+            content: '\f00c';
+            /* Unicode for a checkmark */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 600;
+            color: green;
+            margin-right: 5px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+        }
+
+        .image-wrapper {
+            width: 400px;
+            /* Set width */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures uniform scaling */
+            border-radius: 8px;
+            /* Optional styling */
+        }
+
+        .hero-section {
+            background-color: #25D366;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .btn-whatsapp {
+            background-color: #128C7E;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #075E54;
+            color: white;
+        }
+
+        .feature-card {
+            border: none;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-white p-3 fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">Welcome</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown" style="position: relative; left: -2px;">
+                        <a class="nav-link text-black dropdown-toggle" href="service.html" id="functionsDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="functionsDropdown">
+                            <li><a class="dropdown-item" href="broadcast.html">WhatsApp Broadcast</a></li>
+                            <li><a class="dropdown-item" href="automated.html">Automated Chatbots</a></li>
+                            <li><a class="dropdown-item" href="api.html">WhatsApp API</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="kyc.html">KYC FOR DLT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="pricing1.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-success btn-light-green"
+                            style="background-color:  #28a745; color: #ffffff; border: none;"
+                            onmouseover="this.style.backgroundColor=' #28a745'; this.style.color='#000';"
+                            onmouseout="this.style.backgroundColor=' #28a745'; this.style.color='#ffffff';">Text
+                            API</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br><br>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <section class="bg-half-170 bg-light d-table w-100">
+        <div class="bg-overlay bg-overlay-white"></div>
+        <div class="container">
+            <div class="row mt-5 text-center align-items-center">
+                <div class="col-sm-6">
+                    <div class="text-sm-start">
+                        <div class="page-next-level">
+                            <h4 class="title">WhatsApp API</h4>
+                            <p class="text-muted mb-0">Get in touch. It's free.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="page-next-level text-sm-end">
+                        <ul class="page-next ps-0 mb-0">
+                            <li class="list-inline-item">
+                                <a href="home.html" class="text-decoration-none text-success fw-bold text-uppercase">
+                                    Home
+                                </a>
+                                <i class="fas fa-chevron-right ms-2"></i>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="automated.html"
+                                    class="text-decoration-none text-success fw-bold text-uppercase">
+                                    WhatsApp API
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp API - OTP Authentication Section -->
+    <section class="hero-section mt-1">
+
+        <h1 class="text-center mb-4">WhatsApp API - OTP Authentication</h1>
+        <p class="lead">Authenticate your clients with WhatsApp OTPs and send rich media messages effortlessly.</p>
+
+
+        <a href="https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER" target="_blank" class="btn btn-whatsapp btn-lg"
+            style="background-color: #f0f0f0;">
+            Get Started
+        </a>
+    </section>
+
+
+    <div class="container">
+        <div class="card-wrapper">
+            <h1>
+                <i class="fas fa-robot" style="margin-right: 10px;"></i>
+                Authenticate Your Clients with WhatsApp OTP’s
+            </h1>
+            <ul class="feature-list">
+                <li> Once you are set up, you can start sending triggered OTPs
+                    over WhatsApp API or through the DRAFT4SMS/Ten di
+                    platform</li>
+                <li> Customer can use our API to trigger the such a
+                    notification, Tracking details, OTP’s.. Etc.. With Rich Media
+                    messages.</li>
+
+            </ul>
+            <div class="image-wrapper">
+                <img
+                    src="https://cdn.prod.website-files.com/6565737286e587567248583f/673cce017fbbb14969f15649_SMS%20API%20Hero%20v2-p-1600.webp">
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Features Section -->
+    <section class="py-5 text-center">
+        <h2 class="text-center mb-4">Key Features of Draft4SMS WhatsApp API</h2>
+        <div class="container">
+            <div class="row">
+                <!-- Card 1 -->
+                <div class="col-md-4" style="margin-bottom: 20px;">
+                    <div class="feature-card p-4 shadow-sm rounded" style="transition: transform 0.3s;">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="fas fa-key" style="font-size: 2.5rem; color: #28a745; margin-right: 10px;"></i>
+                            <h5 class="mb-0">Send OTPs, Alerts & Notifications Instantly</h5>
+                        </div>
+                        <p class="text-justify">Trigger time-sensitive messages like login OTPs, payment reminders,
+                            shipment updates, etc.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="feature-card p-4 shadow-sm rounded" style="transition: transform 0.3s;">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="fas fa-image" style="font-size: 2.5rem; color: #007bff; margin-right: 10px;"></i>
+                            <h5 class="mb-0">Rich Media Messaging</h5>
+                        </div>
+                        <p class="text-justify">Share images, PDFs, catalogs, CTA buttons, videos, and location pins to
+                            boost engagement.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="feature-card p-4 shadow-sm rounded" style="transition: transform 0.3s;">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="fas fa-bell" style="font-size: 2.5rem; color: #ffc107; margin-right: 10px;"></i>
+                            <h5 class="mb-0">Robust, Scalable API</h5>
+                        </div>
+                        <p class="text-justify">Built for developers, our API is easy to integrate and supports
+                            high-volume messaging.</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-4">
+                    <div class="feature-card p-4 shadow-sm rounded" style="transition: transform 0.3s;">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="fas fa-lock" style="font-size: 2.5rem; color: #ff5733; margin-right: 10px;"></i>
+                            <!-- Updated color -->
+                            <h5 class="mb-0">Secure & Compliant</h5>
+                        </div>
+                        <p class="text-justify">End-to-end encryption, GDPR and Meta-compliant messaging with full audit
+                            logs.</p>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-md-4">
+                    <div class="feature-card p-4 shadow-sm rounded" style="transition: transform 0.3s;">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="fas fa-chart-line"
+                                style="font-size: 2.5rem; color: #17a2b8; margin-right: 10px;"></i>
+                            <!-- Updated color -->
+                            <h5 class="mb-0">Real-Time Reports & Analytics</h5>
+                        </div>
+                        <p class="text-justify">Track message delivery, read status, and user engagement in real time.
+                        </p>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="col-md-4">
+                    <div class="feature-card p-4 shadow-sm rounded" style="transition: transform 0.3s;">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="fas fa-robot" style="font-size: 2.5rem; color: #6f42c1; margin-right: 10px;"></i>
+                            <!-- Updated color -->
+                            <h5 class="mb-0">Chatbot + CRM Integration</h5>
+                        </div>
+                        <p class="text-justify">Combine with our chatbot builder and CRM tools to automate your full
+                            customer journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <footer class="footer text-center mt-4">
+        <!-- Top Arc Curve -->
+        <div class="footer-arc">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,0 C480,100 960,100 1440,0 L1440,100 L0,100 Z" fill="#343A40" />
+            </svg>
+        </div>
+        <footer class="footer">
+            <div class="footer-arc">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path d="M0,0 C480,100 960,100 1440,0 L1440,100 L0,100 Z" fill="#343A40" />
+                </svg>
+            </div>
+
+            <footer class="footer-content container">
+                <div class="row">
+                    <div class="col-md-4 footer-links">
+                        <h5>KWIC</h5>
+                        <p style="line-height: 1.6; text-align: justify;">We are a Conversational Engagement Platform
+                            empowering businesses to engage meaningfully with customers across commerce.</p>
+
+                    </div>
+                    <div class="col-md-3 footer-links">
+                        <h5>Features</h5>
+                        <ul class="list-unstyled" style="line-height: 1.8;">
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">WhatsApp Flows</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="api.html">WhatsApp Business API</a>
+                            </li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="automated.html">WhatsApp Chatbot</a>
+                            </li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="broadcast.html">WhatsApp Broadcast</a>
+                            </li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">WhatsApp Shop</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-links">
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled" style="line-height: 1.8;">
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="about.html">About us</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="contact.html">Contact</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">Affiliate /Parterns</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">Become an Affiliate</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">Become a partner</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 footer-links">
+                        <h5>Follow us</h5>
+                        <div class="social-icons">
+                            <a href="https://x.com/whatsapp" target="_blank" aria-label="Twitter"
+                                style="margin-right: 0.5em;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.youtube.com/0" target="_blank" aria-label="YouTube"
+                                style="margin-right: 0.5em;">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.instagram.com/whatsapp/?hl=en" target="_blank" aria-label="Instagram"
+                                style="margin-right: 0.5em;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=100064758844406" target="_blank"
+                                aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+                integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" class="whatsapp-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const servicesDropdownLink = document.querySelector('#functionsDropdown');
+                    const dropdownToggle = document.querySelector('#functionsDropdown.dropdown-toggle'); // Target the toggle specifically
+                    const dropdownItems = document.querySelectorAll('.dropdown-item');
+                    let dropdownOpen = false;
+
+                    // Toggle dropdown on click of the main link
+                    servicesDropdownLink.addEventListener('click', function (event) {
+                        if (event.target === servicesDropdownLink) {
+                            if (!dropdownOpen) {
+                                // Simulate Bootstrap's dropdown toggle
+                                servicesDropdownLink.classList.add('show');
+                                const menu = servicesDropdownLink.nextElementSibling;
+                                if (menu && menu.classList.contains('dropdown-menu')) {
+                                    menu.classList.add('show');
+                                }
+                                dropdownOpen = true;
+                                event.preventDefault(); // Prevent immediate navigation
+                            } else {
+                                // Allow navigation if clicking again while open (optional behavior)
+                                window.location.href = this.href;
+                            }
+                        }
+                    });
+
+                    // Redirect to the respective HTML page when a dropdown item is clicked
+                    dropdownItems.forEach(item => {
+                        item.addEventListener('click', function (event) {
+                            window.location.href = this.href;
+                        });
+                    });
+
+                    // Close dropdown if clicking outside
+                    document.addEventListener('click', function (event) {
+                        if (!servicesDropdownLink.contains(event.target) && !event.target.classList.contains('dropdown-item') && dropdownOpen) {
+                            servicesDropdownLink.classList.remove('show');
+                            const menu = servicesDropdownLink.nextElementSibling;
+                            if (menu && menu.classList.contains('dropdown-menu')) {
+                                menu.classList.remove('show');
+                            }
+                            dropdownOpen = false;
+                        }
+                    });
+                });
+            </script>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

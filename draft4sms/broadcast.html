@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        .icon-box {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .icon-box i {
+            font-size: 36px;
+            margin-right: 15px;
+            color: #007bff;
+        }
+
+        .icon-box span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .footer {
+            background-color: #343A40;
+            color: white;
+            padding: 0px 0;
+            position: relative;
+            text-align: center;
+            /* Default text alignment for the footer */
+        }
+
+        .footer-arc {
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .footer-arc svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer a {
+            color: #F8F9FA;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-content {
+            padding-top: 60px;
+            /* Space for the arc */
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+            text-align: left;
+            /* Align links to the left within their columns */
+        }
+
+        .footer-links h5 {
+            font-weight: bold;
+        }
+
+        /* WhatsApp Icon Style */
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-size: 30px;
+            z-index: 1000;
+            cursor: pointer;
+            height: 60px;
+            /* Adjust as needed */
+            width: 60px;
+            /* Should be the same as height for a perfect circle */
+            display: flex;
+            /* To easily center the icon inside */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .whatsapp-icon:hover {
+            background-color: #128C7E;
+        }
+
+        .whatsapp-icon i {
+            color: white;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 24px;
+            /* Adjust size as needed */
+            color: white;
+            /* Default color for the icons */
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #F8F9FA;
+        }
+
+
+        .navbar {
+            z-index: 1030;
+            /* Ensures the navbar appears on top of other content */
+        }
+
+        .btn-light-green {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .btn-light-green:hover {
+            background-color: #218838;
+        }
+
+        .bg-half-170 {
+            height: 50vh !important;
+            /* Use viewport height for full screen */
+            display: table;
+            /* To vertically center content within */
+            width: 100%;
+            background: url('https://shreethemes.in/leaping/layouts/images/bg.jpg') center center;
+            background-size: cover;
+            /* Ensure the background image covers the entire area */
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight {
+            background: linear-gradient(to right, #0622a0, #b50cbf);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .feature-box img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .feature-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .feature-box {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 1rem;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-box h5 {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-white p-3 fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">Welcome</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown" style="position: relative; left: -2px;">
+                        <a class="nav-link text-black dropdown-toggle" href="service.html" id="functionsDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="functionsDropdown">
+                            <li><a class="dropdown-item" href="broadcast.html">WhatsApp Broadcast</a></li>
+                            <li><a class="dropdown-item" href="automated.html">Automated Chatbots</a></li>
+                            <li><a class="dropdown-item" href="api.html">WhatsApp API</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="kyc.html">KYC FOR DLT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-black" aria-current="page" href="pricing1.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="submit" id="submit" name="send" class="btn btn-light-green custom-button">Text
+                            API</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br><br>
+
+    <!-- Hero Section -->
+    <!-- Page Header Section -->
+    <section class="bg-half-170 bg-light d-table w-100">
+        <div class="bg-overlay bg-overlay-white"></div>
+        <div class="container">
+            <div class="row mt-5 text-center align-items-center">
+                <div class="col-sm-6">
+                    <div class="text-sm-start">
+                        <div class="page-next-level">
+                            <h4 class="title">Whatsap Broadcast</h4>
+                            <p class="text-muted mb-0">Get in touch. It's free.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="page-next-level text-sm-end">
+                        <ul class="page-next ps-0 mb-0">
+                            <li class="list-inline-item">
+                                <a href="home.html" style="text-decoration: none;">
+                                    <i class="text-uppercase text-green fw-bold" style="color: green">Home</i>
+                                </a>
+                            </li>
+
+                            <i class="fas fa-chevron-right"></i>
+                            <li class="list-inline-item">
+                                <a href="broadcast.html" style="text-decoration: none;">
+                                    <span class="text-uppercase text-green fw-bold" style="color: green;">Whatsapp
+                                        Broadcast</span></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+
+    <!-- WhatsApp Broadcast Messaging Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold">WhatsApp Broadcast Messaging</h2>
+                    <p class="text-muted fs-5">Reach More. Sell More. Engage Better.</p>
+                </div>
+            </div>
+
+            <!-- Content Row -->
+            <div class="row align-items-center g-5">
+                <!-- Left: Image -->
+                <div class="col-md-6">
+                    <img src="data:image/jpeg;base64,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"
+                        alt="Broadcast Illustration" class="img-fluid rounded">
+
+                </div>
+
+                <!-- Right: Text Content -->
+                <div class="col-md-6">
+                    <p class="lead">
+                        Unlock the power of WhatsApp Broadcast with <strong>Draft4SMS</strong>—India’s leading WhatsApp
+                        Business Messaging provider.
+                    </p>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Direct inbox delivery
+                            with 1-to-1 visibility</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Verified business
+                            identity (green tick)</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Supports images,
+                            PDFs, and CTAs</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Over 90% open rates
+                        </li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Meta-approved
+                            templates</li>
+                    </ul>
+                    <p class="fw-semibold text-success">Boost your marketing ROI by up to <strong>100X</strong> with
+                        personalized broadcast campaigns.</p>
+                    <a href="/contact" class="btn btn-success btn-lg mt-3">Start Broadcasting Now</a>
+                </div>
+            </div>
+
+            <!-- Use Cases -->
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="fw-bold mb-4 text-center">Popular Use Cases</h4>
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3 text-center">
+                        <div class="col"><span class="badge bg-success-subtle text-dark p-3 w-100">Product
+                                Launches</span></div>
+                        <div class="col"><span class="badge bg-success-subtle text-dark p-3 w-100">Offers &
+                                Discounts</span></div>
+                        <div class="col"><span class="badge bg-success-subtle text-dark p-3 w-100">Reminders</span>
+                        </div>
+                        <div class="col"><span class="badge bg-success-subtle text-dark p-3 w-100">Event Invites</span>
+                        </div>
+                        <div class="col"><span class="badge bg-success-subtle text-dark p-3 w-100">Feedback</span></div>
+                        <div class="col"><span class="badge bg-success-subtle text-dark p-3 w-100">Order Updates</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto">
+                    <h4 class="fw-bold mb-4 text-center">How It Works</h4>
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item"><strong>1.</strong> Upload opt-in customer list</div>
+                        <div class="list-group-item"><strong>2.</strong> Select or design message template</div>
+                        <div class="list-group-item"><strong>3.</strong> Schedule or send instantly</div>
+                        <div class="list-group-item"><strong>4.</strong> Track delivery, open & click rates</div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Features -->
+    <!-- Why Choose WhatsApp Broadcast Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold">Why Choose WhatsApp Broadcast?</h3>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Card 1 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow rounded-4 text-center p-3">
+                        <div class="mb-3">
+                            <i class="bi bi-inbox-fill text-success fs-1"></i>
+                        </div>
+                        <h5 class="card-title fw-semibold">Direct Delivery to Inbox</h5>
+                        <p class="card-text text-justify">Send messages directly into your customers' WhatsApp inbox—no
+                            groups, no spam, just 1-to-1 visibility.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow rounded-4 text-center p-3">
+                        <div class="mb-3">
+                            <i class="bi bi-patch-check-fill text-success fs-1"></i>
+                        </div>
+                        <h5 class="card-title fw-semibold">Official Business Identity</h5>
+                        <p class="card-text text-justify">Use your verified WhatsApp Business number with brand name,
+                            logo, and even green tick (optional).</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow rounded-4 text-center p-3">
+                        <div class="mb-3">
+                            <i class="bi bi-image-fill text-success fs-1"></i>
+                        </div>
+                        <h5 class="card-title fw-semibold">Rich Media Support</h5>
+                        <p class="card-text text-justify">Share images, videos, PDFs, catalogs, and clickable buttons
+                            that drive engagement.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow rounded-4 text-center p-3">
+                        <div class="mb-3">
+                            <i class="bi bi-bar-chart-fill text-success fs-1"></i>
+                        </div>
+                        <h5 class="card-title fw-semibold">High Open & Response Rates</h5>
+                        <p class="card-text text-justify">WhatsApp messages boast 90%+ open rates—significantly higher
+                            than email or SMS.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow rounded-4 text-center p-3">
+                        <div class="mb-3">
+                            <i class="bi bi-file-earmark-text-fill text-success fs-1"></i>
+                        </div>
+                        <h5 class="card-title fw-semibold">Pre-approved Templates</h5>
+                        <p class="card-text text-justify">Use Meta-approved message templates for quick approval and
+                            smooth campaign delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer text-center mt-4">
+        <!-- Top Arc Curve -->
+        <div class="footer-arc">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,0 C480,100 960,100 1440,0 L1440,100 L0,100 Z" fill="#343A40" />
+            </svg>
+        </div>
+        <footer class="footer">
+            <div class="footer-arc">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path d="M0,0 C480,100 960,100 1440,0 L1440,100 L0,100 Z" fill="#343A40" />
+                </svg>
+            </div>
+
+            <footer class="footer-content container">
+                <div class="row">
+                    <div class="col-md-4 footer-links">
+                        <h5>KWIC</h5>
+                        <p style="line-height: 1.6; text-align: justify;">We are a Conversational Engagement Platform
+                            empowering businesses to engage meaningfully with customers across commerce.</p>
+
+                    </div>
+                    <div class="col-md-3 footer-links">
+                        <h5>Features</h5>
+                        <ul class="list-unstyled" style="line-height: 1.8;">
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">WhatsApp Flows</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="api">WhatsApp Business API</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="automated.html">WhatsApp Chatbot</a>
+                            </li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="broadcast.html">WhatsApp Broadcast</a>
+                            </li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">WhatsApp Shop</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-links">
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled" style="line-height: 1.8;">
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="about.html">About us</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="contact.html">Contact</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">Affiliate /Parterns</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">Become an Affiliate</a></li>
+                            <li><i class="fas fa-chevron-right me-2"></i><a href="#">Become a partner</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 footer-links">
+                        <h5>Follow us</h5>
+                        <div class="social-icons">
+                            <a href="https://x.com/whatsapp" target="_blank" aria-label="Twitter"
+                                style="margin-right: 0.5em;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.youtube.com/0" target="_blank" aria-label="YouTube"
+                                style="margin-right: 0.5em;">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.instagram.com/whatsapp/?hl=en" target="_blank" aria-label="Instagram"
+                                style="margin-right: 0.5em;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=100064758844406" target="_blank"
+                                aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+                integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" class="whatsapp-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const servicesDropdownLink = document.querySelector('#functionsDropdown');
+                    const dropdownToggle = document.querySelector('#functionsDropdown.dropdown-toggle'); // Target the toggle specifically
+                    const dropdownItems = document.querySelectorAll('.dropdown-item');
+                    let dropdownOpen = false;
+
+                    // Toggle dropdown on click of the main link
+                    servicesDropdownLink.addEventListener('click', function (event) {
+                        if (event.target === servicesDropdownLink) {
+                            if (!dropdownOpen) {
+                                // Simulate Bootstrap's dropdown toggle
+                                servicesDropdownLink.classList.add('show');
+                                const menu = servicesDropdownLink.nextElementSibling;
+                                if (menu && menu.classList.contains('dropdown-menu')) {
+                                    menu.classList.add('show');
+                                }
+                                dropdownOpen = true;
+                                event.preventDefault(); // Prevent immediate navigation
+                            } else {
+                                // Allow navigation if clicking again while open (optional behavior)
+                                window.location.href = this.href;
+                            }
+                        }
+                    });
+
+                    // Redirect to the respective HTML page when a dropdown item is clicked
+                    dropdownItems.forEach(item => {
+                        item.addEventListener('click', function (event) {
+                            window.location.href = this.href;
+                        });
+                    });
+
+                    // Close dropdown if clicking outside
+                    document.addEventListener('click', function (event) {
+                        if (!servicesDropdownLink.contains(event.target) && !event.target.classList.contains('dropdown-item') && dropdownOpen) {
+                            servicesDropdownLink.classList.remove('show');
+                            const menu = servicesDropdownLink.nextElementSibling;
+                            if (menu && menu.classList.contains('dropdown-menu')) {
+                                menu.classList.remove('show');
+                            }
+                            dropdownOpen = false;
+                        }
+                    });
+                });
+            </script>
+            <!-- Bootstrap JS and Popper.js -->
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
